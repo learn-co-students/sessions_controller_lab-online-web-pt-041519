@@ -4,10 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def hello
-    if !logged_in?
-
-      redirect_to sessions_new_path
-    end
+    redirect_to login_path if !logged_in?
   end
 
   helpers

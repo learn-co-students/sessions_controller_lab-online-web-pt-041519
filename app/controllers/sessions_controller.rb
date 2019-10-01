@@ -5,15 +5,11 @@ class SessionsController < ApplicationController
 
   def create
     session[:name] = params[:name]
-    if logged_in?
-      redirect_to root_path
-    else
-      redirect_to sessions_new_path
-    end
+    redirect_to logged_in? ? root_path : login_path
   end
 
   def destroy
     session.delete :name
-    redirect_to sessions_new_path
+    redirect_to login_path
   end
 end
