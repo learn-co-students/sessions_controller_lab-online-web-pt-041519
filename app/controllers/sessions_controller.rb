@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     
-    if session[:name] = params[:name].nil? || params[:name].empty?
+    if !params[:name] || params[:name].empty?
       redirect_to login_path, alert: "Please enter your name."
     else
       session[:name] = params[:name]
